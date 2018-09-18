@@ -1,1 +1,0 @@
-Discord Bot made by wes.mp4
