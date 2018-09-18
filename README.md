@@ -1,0 +1,2 @@
+# MajorTomy
+Discord Bot
