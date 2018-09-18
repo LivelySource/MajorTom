@@ -1,0 +1,23 @@
+{
+  "name": "botouthere",
+  "version": "1.0.0",
+  "description": "Personal Use Only",
+  "main": "index.js",
+  "scripts": {
+    "test": "!"
+  },
+  "author": "wes",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "discord.js": "^11.1.0",
+    "moment": "^2.18.1",
+    "ms": "^0.7.3",
+	"superagent": "^3.8.3"
+  }
+}
+{"name":"config.json","date":"2018-09-15T05:43:07.286Z","url":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fconfig.json","type":"application/json","size":199,"thumbnail":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fthumbnails%2Fconfig.json","thumbnailWidth":210,"thumbnailHeight":210,"dominantColor":"rgba(1, 198, 110, 0.60)","uuid":"X3SsFIYPUkca33N2"}
+{"name":"yeet.rar","date":"2018-09-15T07:51:56.537Z","url":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fyeet.rar","type":"","size":9514,"thumbnail":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fthumbnails%2Fyeet.rar","thumbnailWidth":210,"thumbnailHeight":210,"dominantColor":"rgba(209, 165, 247, 0.60)","uuid":"DbONE6MlyenEyJfM"}
+{"uuid":"DbONE6MlyenEyJfM","deleted":true}
+{"name":"yeet.rar","date":"2018-09-15T08:00:08.529Z","url":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fyeet.rar","type":"","size":9514,"thumbnail":"https://cdn.glitch.com/4fb1d70d-79f0-4904-bca8-34c829777df7%2Fthumbnails%2Fyeet.rar","thumbnailWidth":210,"thumbnailHeight":210,"dominantColor":"rgba(157, 103, 224, 0.60)","uuid":"caPTYq1WlT9K1QaL"}
+{"uuid":"caPTYq1WlT9K1QaL","deleted":true}
