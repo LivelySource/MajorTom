@@ -1,19 +1,23 @@
 {
-  "name": "Major Tom",
-  "version": "1.0.0",
-  "description": "Personal Use Only",
-  "main": "node index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "author": "wes",
-  "license": "ISC",
   "dependencies": {
+    "babel-eslint": "^8.2.6",
     "chalk": "^2.4.1",
+    "discord.io": "^2.5.3",
     "discord.js": "^11.4.2",
+    "enmap": "^2.6.3",
+    "enmap-level": "^2.1.0",
+    "enmap-sqlite": "^2.0.5",
+    "is-emoji": "^0.1.1",
     "moment": "^2.22.2",
-    "ms": "^2.1.1",
-    "superagent": "^3.8.3"
+    "moment-duration-format": "^2.2.2",
+    "readdir": "^0.1.0",
+    "util": "^0.11.0",
+    "winston": "^2.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-import": "^2.14.0"
   }
 }

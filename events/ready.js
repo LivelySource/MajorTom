@@ -1,4 +1,9 @@
-const chalk = require('chalk');
-module.exports = client => { // eslint-disable-line no-unused-vars
-  console.log(chalk.bgBlue.black('Ground Control, this is Major Tom... We Have Lift-Off!'));
+module.exports = async client => {
+
+ // Log that the bot is online.
+ client.logger.log(`[READY] ${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.\n`, "ready");
+
+ // Make the bot "play the game" which is the help command with default prefix.
+ client.user.setActivity(`${client.config.defaultSettings.prefix}help`, {type: "PLAYING"});
+
 };

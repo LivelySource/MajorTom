@@ -1,34 +1,84 @@
-const {RichEmbed} = require('discord.js');
-const {caseNumber} = require('../util/caseNumber.js');
-const {parseUser} = require('../util/parseUser.js');
-const config = require('../config.json');
+// ---
+//
+// command: ban(client, message, args)
+//
+// A fun command where guild members can 'ban'
+// other members.
+//
+// --
+//
+// Parameters
+//
+// - client (Discord.Client()) : The main
+// bot client, allows us to communicate
+// with Discord's API.
+//
+// - message (Message) : Represents a message on Discord.
+//
+// - args (Array) : An array containing arguments
+// called by the message's author.
+//
+// --
+//
+// Example
+//
+//  => a!ban (user)
+//
+// ---
+
 exports.run = async (client, message, args) => {
-  const user = message.mentions.users.first();
-  parseUser(message, user);
-  const modlog = client.channels.find('name', 'mod-log');
-  const caseNum = await caseNumber(client, modlog);
-  if (!modlog) return message.reply('I cannot find a mod-log channel');
-  if (message.mentions.users.size < 1) return message.reply('You must mention someone to ban them.').catch(console.error);
-  // message.guild.ban(user, 2);
 
-  const reason = args.splice(1, args.length).join(' ') || `Awaiting moderator's input. Use ${config.prefix}reason ${caseNum} <reason>.`;
-  const embed = new RichEmbed()
-  .setColor(0x00AE86)
-  .setTimestamp()
-  .setDescription(`**Action:** Ban\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}`)
-  .setFooter(`Case ${caseNum}`);
-  return client.channels.get(modlog.id).send({embed});
-};
+ // get an array of the ID's of everyone who was mentioned
+ const mentions = message.mentions.members.keyArray();
+ // then, check the length of the variable to see if any
+ // user was mentioned, if not we inform the author to mention members
+ if (!(mentions.length)) return message.reply('please mention a user to get the ban hammer.');
 
-exports.conf = {
-  enabled: false,
-  guildOnly: false,
-  aliases: [],
-  permLevel: 2
-};
+ // iterate through each member who was mentioned
+ mentions.forEach((ID) => {
 
+  // we get the settings for the guild because we store settings for
+  // members in their in order for settings to be server unique. if
+  // the server doesn't have their own settingss we supply a fresh object
+  const settings = client.settings.get(message.guild.id) || {};
+  // we use their settings to see how many times they've been banned
+
+  // check if the settings have custom settings for the guild member,
+  // if not we initialize their settings here
+  if (!(ID in settings)) settings[ID] = {};
+
+  // then, we check if their settings have the property 'banCount',
+  // we use this property to determine how many times a member has been banned
+  if (!(settings[ID].banCount)) settings[ID].banCount = 0;
+
+
+  // increase the ban count by 1
+  settings[ID].banCount += 1;
+
+  // then, humiliate the banned user
+  message.channel.send(`<@${message.author.id}> has banned <@${ID}>!`)
+  message.channel.send(`<@${ID}> has been banned ${settings[ID].banCount} time(s)!`);;
+
+  // and finally, save the changes
+  client.settings.set(message.guild.id, settings);
+
+ });
+
+}
+
+// Provides useful information about this command.
 exports.help = {
-  name: 'ban',
-  description: 'Bans the mentioned user.',
-  usage: 'ban [mention] [reason]'
+ name: 'ban',
+ category: 'fun',
+ description: 'Ban a fellow guild member.',
+ usage: 'a!ban (user)'
+};
+
+// Provides configeration use fors
+// this commands, like useful properties such
+// as permission levels.
+exports.config = {
+ permissionLevel: 0,
+ requiredRole: "Guests",
+ guildOnly: true
 };

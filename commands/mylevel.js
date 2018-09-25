@@ -1,9 +1,9 @@
 // ---
 //
-// command: ping(client, message, args)
+// command: mylevel(client, message, args)
 //
-// Bread and butter for Discord bots, virtually
-// a "Hello, World!"
+// This command informs guild members about
+// their permission level.
 //
 // --
 //
@@ -22,20 +22,23 @@
 //
 // Example
 //
-//  => a!ping
+//  => a!mylevel
 //
 // ---
-
 exports.run = async (client, message, args) => {
- message.channel.send('pong!');
+
+ // reply with an embeded message containing their
+ // permission level with their permission levwl name
+ message.channel.send({embed: { color: 3447003, title: `Permissions for user: ${message.author.username}`, description: `Your permission level is ${message.author.permissionLevel}, which means you are apart of the '${message.author.role}' role.`}});
+
 }
 
 // Provides useful information about this command.
 exports.help = {
- name: 'ping',
- category: 'core',
- description: 'Pings then pongs.',
- usage: 'a!ping'
+ name: 'mylevel',
+ category: 'info',
+ description: 'Determine your permisssion level for this guild.',
+ usage: 'a!mylevel'
 };
 
 // Provides configeration use for
@@ -44,5 +47,5 @@ exports.help = {
 exports.config = {
  permissionLevel: 0,
  requiredRole: "Guests",
- guildOnly: false
+ guildOnly: true
 };
